@@ -1,35 +1,16 @@
 import React from "react";
-import styles from "./App.module.css";
-import coronaVirus from "./images/coronavirus2.jpg";
-import { Cards, Charts, CountryPicker } from "./components";
-import { fetchData } from "./api";
-class App extends React.Component {
-  state = {
-    data: {},
-    country: "",
-  };
-
-  async componentDidMount() {
-    const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
-  }
-
-  onHandleCountryChange = async (country) => {
-    const fetchedCountrySelected = await fetchData(country);
-    this.setState({ data: fetchedCountrySelected, country: country });
-  };
-
-  render() {
-    const { data, country } = this.state;
-    return (
-      <div className={styles.container}>
-        <img className={styles.image} src={coronaVirus} alt="corona" />
-        <Cards data={data} />
-        <CountryPicker onHandleCountryChange={this.onHandleCountryChange} />
-        <Charts data={data} country={country} />
-      </div>
-    );
-  }
-}
+import Home from "./pages";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Message from "./pages/Message";
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/home" exact component={Home} />
+        <Route path="/" exact component={Message} />
+      </Switch>
+    </Router>
+  );
+};
 
 export default App;
