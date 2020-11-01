@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: rgba(250, 250, 250);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+
+.image {
+  width: 370px;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 0 5%;
+  }
+
+  .image {
+    width: 100%;
+  }
+}
